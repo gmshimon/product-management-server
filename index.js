@@ -1,19 +1,24 @@
 const express = require('express');
 const ObjectId = require('mongodb').ObjectId;
 var cors = require('cors')
+require('dotenv').config();
+
 
 const app = express();
 app.use(cors());
 app.use(express.json())
-const port = 5000;
+const port = process.nextTick.PORT || 5000;
 
 //user:dbuser1
 //password:UXpzWDDxsLa40UHX
 
+const user = process.env.DB_user;
+const password = process.env.DB_pass;
 
 
 const {MongoClient} = require('mongodb');
-const uri = "mongodb+srv://dbuser1:n5sKe0kjadXjDEeO@cluster0.in8lp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const uri = `mongodb+srv://${user}:${password}@cluster0.in8lp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+console.log(uri)
 
 const client = new MongoClient(uri, {useNewUrlParser: true, useUnifiedTopology: true});
 
