@@ -7,7 +7,7 @@ require('dotenv').config();
 const app = express();
 app.use(cors());
 app.use(express.json())
-const port = process.nextTick.PORT || 5000;
+const port = process.env.PORT || 7000;
 
 //user:dbuser1
 //password:UXpzWDDxsLa40UHX
